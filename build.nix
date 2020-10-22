@@ -1,6 +1,7 @@
 let
   sources = import ./nix/sources.nix {};
   pkgs    = import sources.nixpkgs {};
-  hmmer   = pkgs.callPackage ./default.nix {};
+  easel   = pkgs.callPackage sources.easel {};
+  hmmer   = pkgs.callPackage ./default.nix { inherit easel; };
 in
   hmmer

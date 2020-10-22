@@ -1,4 +1,16 @@
 {
+    "easel": {
+        "branch": "master",
+        "description": "Sequence analysis library used by Eddy/Rivas lab code",
+        "homepage": "",
+        "owner": "jefdaj",
+        "repo": "easel-nix",
+        "rev": "ea6d9daea6060bcfd6375e8b3450cfca534b6ce8",
+        "sha256": "00l214r8rplaim6474w6gkw61q3ll7k4j7p87xqn7glzvby3yv1s",
+        "type": "tarball",
+        "url": "https://github.com/jefdaj/easel-nix/archive/ea6d9daea6060bcfd6375e8b3450cfca534b6ce8.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "niv": {
         "branch": "master",
         "description": "Easy dependency management for Nix projects",

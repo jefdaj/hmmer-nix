@@ -1,14 +1,12 @@
-{ stdenv, fetchurl }:
+{ stdenv, fetchurl, easel }:
 
 stdenv.mkDerivation rec {
   version = "3.2.1";
   pname = "hmmer";
 
   src = ./.;
-  # src = fetchurl {
-  #   url = "http://eddylab.org/software/hmmer/${pname}-${version}.tar.gz";
-  #   sha256 = "171bivy6xhgjsz5nv53n81pc3frnwz29ylblawk2bv46szwjjqd5";
-  # };
+
+  buildInputs = [ easel ];
 
   meta = with stdenv.lib; {
     description = "Biosequence analysis using profile hidden Markov models";
