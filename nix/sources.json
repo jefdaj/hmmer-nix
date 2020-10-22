@@ -5,10 +5,10 @@
         "homepage": "",
         "owner": "jefdaj",
         "repo": "easel-nix",
-        "rev": "ea6d9daea6060bcfd6375e8b3450cfca534b6ce8",
-        "sha256": "00l214r8rplaim6474w6gkw61q3ll7k4j7p87xqn7glzvby3yv1s",
+        "rev": "47daa7c1020224be9312c4f5cd6953462f659306",
+        "sha256": "1icx5sj2qfwimj4zz6xg4clpazhk3rfirnsmgi0vgqiad4sh6f37",
         "type": "tarball",
-        "url": "https://github.com/jefdaj/easel-nix/archive/ea6d9daea6060bcfd6375e8b3450cfca534b6ce8.tar.gz",
+        "url": "https://github.com/jefdaj/easel-nix/archive/47daa7c1020224be9312c4f5cd6953462f659306.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "niv": {

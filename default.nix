@@ -1,12 +1,22 @@
-{ stdenv, fetchurl, easel }:
+{ stdenv, autoreconfHook, easel, python3, perl }:
 
 stdenv.mkDerivation rec {
-  version = "3.2.1";
+  version = "3.3.1";
   pname = "hmmer";
 
   src = ./.;
+  nativeBuildInputs = [ autoreconfHook ];
 
-  buildInputs = [ easel ];
+  # TODO is this a good way to do handle the easel source dependency?
+  buildInputs = [ python3 perl ];
+  prePatch = ''
+    cp -r ${easel.src} ./easel
+    chmod +w ./easel -R
+  '';
+  postPatch = ''
+    patchShebangs --build *
+  '';
+  doCheck = true;
 
   meta = with stdenv.lib; {
     description = "Biosequence analysis using profile hidden Markov models";
