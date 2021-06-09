@@ -1,14 +1,35 @@
-language: c
+language: nix
+nix: 2.3.7
+sudo: false
 
 env:
-  - SQC_NONZERO_EXIT=1
+  global:
+  - CACHIX_CACHE=jefdaj
+
+install:
+- echo "trusted-users = $USER" | sudo tee -a /etc/nix/nix.conf
+- if [ "$TRAVIS_OS_NAME" = "osx" ]; then sudo launchctl kickstart -k system/org.nixos.nix-daemon && sleep 5 || true; else sudo systemctl restart nix-daemon; fi
+- nix-env -iA nixpkgs.cachix
+- cachix use $CACHIX_CACHE
+
+matrix:
+  fast_finish: true
+  include:
+  - os: linux
+    dist: xenial
+    env: NIX_PATH=nixpkgs=channel:nixos-21.05
+  - os: osx
+    osx_image: xcode10.1
+    env: NIX_PATH=nixpkgs=channel:nixpkgs-21.05-darwin
+
+git:
+  # quiet: true
+  depth: 5
 
 script:
-  - git clone -b develop https://github.com/${TRAVIS_REPO_SLUG/hmmer/easel}.git
-  - ln -s easel/aclocal.m4 aclocal.m4
-  - autoconf
-  - ./configure
-  - make
-  - make dev
-  - make check
+  - nix-build release.nix
 
+notifications:
+  email:
+  on_success: false
+  on_failure: false
